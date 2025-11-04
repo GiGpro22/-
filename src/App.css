@@ -1,0 +1,185 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #fafbf8 100%);
+  padding: 70px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: linear-gradient(180deg, rgba(107, 142, 90, 0.03) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Падающие розы */
+.falling-flower {
+  position: absolute;
+  top: -50px;
+  font-size: 20px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  animation: fall linear infinite;
+}
+
+.falling-flower:nth-child(1) {
+  left: 5%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+
+.falling-flower:nth-child(2) {
+  left: 15%;
+  animation-duration: 15s;
+  animation-delay: 2s;
+  font-size: 18px;
+}
+
+.falling-flower:nth-child(3) {
+  left: 25%;
+  animation-duration: 10s;
+  animation-delay: 4s;
+  font-size: 22px;
+}
+
+.falling-flower:nth-child(4) {
+  left: 35%;
+  animation-duration: 13s;
+  animation-delay: 1s;
+}
+
+.falling-flower:nth-child(5) {
+  left: 45%;
+  animation-duration: 14s;
+  animation-delay: 3s;
+  font-size: 19px;
+}
+
+.falling-flower:nth-child(6) {
+  left: 55%;
+  animation-duration: 11s;
+  animation-delay: 5s;
+}
+
+.falling-flower:nth-child(7) {
+  left: 65%;
+  animation-duration: 16s;
+  animation-delay: 2s;
+  font-size: 21px;
+}
+
+.falling-flower:nth-child(8) {
+  left: 75%;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+
+.falling-flower:nth-child(9) {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 1s;
+  font-size: 17px;
+}
+
+.falling-flower:nth-child(10) {
+  left: 95%;
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+
+@keyframes fall {
+  0% {
+    top: -50px;
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    top: 100vh;
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 60px 0 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.shop-title {
+  font-size: 4rem;
+  margin: 0;
+  color: #1a3d0a;
+  font-weight: 700;
+  letter-spacing: -1px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  position: relative;
+  display: inline-block;
+  line-height: 1.1;
+}
+
+.shop-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #6b8e5a;
+  border-radius: 2px;
+}
+
+.shop-subtitle {
+  font-size: 0.95rem;
+  color: #8b9a7a;
+  margin-top: 40px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+}
+
+.products-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 45px;
+  justify-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .shop-title {
+    font-size: 2.8rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .shop-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+  }
+  
+  .app {
+    padding: 50px 15px;
+  }
+  
+  .app-header {
+    padding: 40px 0 35px;
+    margin-bottom: 60px;
+  }
+}
