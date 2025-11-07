@@ -1,185 +1,176 @@
-.app {
+.app-wrapper {
   min-height: 100vh;
-  background: linear-gradient(180deg, #ffffff 0%, #fafbf8 100%);
-  padding: 70px 20px;
-  position: relative;
-  overflow: hidden;
+  background: var(--bg-color);
 }
 
-.app::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 400px;
-  background: linear-gradient(180deg, rgba(107, 142, 90, 0.03) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-/* Падающие розы */
-.falling-flower {
-  position: absolute;
-  top: -50px;
-  font-size: 20px;
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 0;
-  animation: fall linear infinite;
-}
-
-.falling-flower:nth-child(1) {
-  left: 5%;
-  animation-duration: 12s;
-  animation-delay: 0s;
-}
-
-.falling-flower:nth-child(2) {
-  left: 15%;
-  animation-duration: 15s;
-  animation-delay: 2s;
-  font-size: 18px;
-}
-
-.falling-flower:nth-child(3) {
-  left: 25%;
-  animation-duration: 10s;
-  animation-delay: 4s;
-  font-size: 22px;
-}
-
-.falling-flower:nth-child(4) {
-  left: 35%;
-  animation-duration: 13s;
-  animation-delay: 1s;
-}
-
-.falling-flower:nth-child(5) {
-  left: 45%;
-  animation-duration: 14s;
-  animation-delay: 3s;
-  font-size: 19px;
-}
-
-.falling-flower:nth-child(6) {
-  left: 55%;
-  animation-duration: 11s;
-  animation-delay: 5s;
-}
-
-.falling-flower:nth-child(7) {
-  left: 65%;
-  animation-duration: 16s;
-  animation-delay: 2s;
-  font-size: 21px;
-}
-
-.falling-flower:nth-child(8) {
-  left: 75%;
-  animation-duration: 12s;
-  animation-delay: 4s;
-}
-
-.falling-flower:nth-child(9) {
-  left: 85%;
-  animation-duration: 14s;
-  animation-delay: 1s;
-  font-size: 17px;
-}
-
-.falling-flower:nth-child(10) {
-  left: 95%;
-  animation-duration: 13s;
-  animation-delay: 3s;
-}
-
-@keyframes fall {
-  0% {
-    top: -50px;
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    top: 100vh;
-    transform: translateX(100px) rotate(360deg);
-  }
+.app {
+  min-height: calc(100vh - 60px);
+  background: var(--bg-color);
+  padding: 40px 20px;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 80px;
-  padding: 60px 0 50px;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 40px;
+  padding: 30px 0;
 }
 
 .shop-title {
-  font-size: 4rem;
-  margin: 0;
-  color: #1a3d0a;
-  font-weight: 700;
-  letter-spacing: -1px;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  position: relative;
-  display: inline-block;
-  line-height: 1.1;
-}
-
-.shop-title::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: #6b8e5a;
-  border-radius: 2px;
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  color: var(--title-color);
+  font-weight: bold;
 }
 
 .shop-subtitle {
-  font-size: 0.95rem;
-  color: #8b9a7a;
-  margin-top: 40px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-style: normal;
-  position: relative;
+  font-size: 1rem;
+  color: var(--subtitle-color);
+  margin: 0;
 }
 
 .products-container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 45px;
-  justify-items: center;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-@media (max-width: 768px) {
-  .products-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .shop-title {
-    font-size: 2.8rem;
-    letter-spacing: -0.5px;
-  }
-  
-  .shop-subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-  }
-  
-  .app {
-    padding: 50px 15px;
-  }
-  
-  .app-header {
-    padding: 40px 0 35px;
-    margin-bottom: 60px;
-  }
+/* стили корзины */
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cart-items {
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.remove-btn {
+  padding: 8px 16px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-total {
+  background: var(--card-bg);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.total-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* стили формы входа */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-form {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-color);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* стили главной страницы */
+.dashboard-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dashboard-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+}
+
+.dashboard-text {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin: 0;
 }

@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useCart } from '../contexts/CartContext';
 import './ProductCard.css';
 
-function ProductCard({ name, price, image }) {
-  const [quantity, setQuantity] = useState(0);
+function ProductCard({ id, name, price, image }) {
+  const { addToCart, cart } = useCart();
+  
+  const itemInCart = cart.items.find(item => item.id === id);
+  const quantity = itemInCart ? itemInCart.quantity : 0;
 
   const handleAddToCart = () => {
-    setQuantity(quantity + 1);
+    addToCart({ id, name, price, image });
   };
 
   return (
@@ -15,7 +18,7 @@ function ProductCard({ name, price, image }) {
       </div>
       <div className="product-info">
         <h3 className="product-name">{name}</h3>
-        <p className="product-price">{price}</p>
+        <p className="product-price">{price} ₽</p>
         <div className="product-actions">
           <button className="add-to-cart-btn" onClick={handleAddToCart}>
             Добавить в корзину

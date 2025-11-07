@@ -1,60 +1,31 @@
-import ProductCard from './components/ProductCard';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { CartProvider } from './contexts/CartContext';
+import { ThemeProvider } from './contexts/ThemeContext';
+import Navigation from './components/Navigation';
+import Catalog from './pages/Catalog';
+import Cart from './pages/Cart';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import './App.css';
 
-import bouquet1 from './assets/images/bouquet1.jpg';
-import bouquet2 from './assets/images/bouquet2.jpg';
-import bouquet3 from './assets/images/bouquet3.jpg';
-
 function App() {
-  const products = [
-    {
-      id: 1,
-      name: 'Радужные розы',
-      price: 1500,
-      image: bouquet1
-    },
-    {
-      id: 2,
-      name: 'Корзина с розами',
-      price: 1800,
-      image: bouquet2
-    },
-    {
-      id: 3,
-      name: 'Белые розы',
-      price: 1200,
-      image: bouquet3
-    }
-  ];
-
   return (
-    <div className="app">
-      <div className="falling-flower">💐</div>
-      <div className="falling-flower">🌹</div>
-      <div className="falling-flower">💐</div>
-      <div className="falling-flower">🌹</div>
-      <div className="falling-flower">💐</div>
-      <div className="falling-flower">🌹</div>
-      <div className="falling-flower">💐</div>
-      <div className="falling-flower">🌹</div>
-      <div className="falling-flower">💐</div>
-      <div className="falling-flower">🌹</div>
-
-      <header className="app-header">
-        <h1 className="shop-title">Golden Flower</h1>
-        <p className="shop-subtitle">Цветочный магазин</p>
-      </header>
-      <main className="products-container">
-        {products.map(product => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            image={product.image}
-          />
-        ))}
-      </main>
-    </div>
+    <ThemeProvider>
+      <CartProvider>
+        <Router>
+          <div className="app-wrapper">
+            <Navigation />
+            <Routes>
+              <Route path="/" element={<Catalog />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
+        </Router>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
 

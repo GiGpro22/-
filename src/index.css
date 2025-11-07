@@ -8,19 +8,50 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #2d5016;
-  background-color: #faf8f3;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root[data-theme="light"] {
+  --text-color: #2d5016;
+  --bg-color: #faf8f3;
+  --nav-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: rgba(107, 142, 90, 0.08);
+  --shadow-color: rgba(26, 61, 10, 0.04);
+  --hover-bg: rgba(107, 142, 90, 0.05);
+  --primary-color: #6b8e5a;
+  --primary-text: #ffffff;
+  --accent-color: #d32f2f;
+  --button-bg: #f5f5f5;
+  --title-color: #1a3d0a;
+  --subtitle-color: #8b9a7a;
+}
+
+:root[data-theme="dark"] {
+  --text-color: #e8f5e3;
+  --bg-color: #1a1f17;
+  --nav-bg: #252a20;
+  --card-bg: #2d3328;
+  --border-color: rgba(107, 142, 90, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --hover-bg: rgba(107, 142, 90, 0.15);
+  --primary-color: #6b8e5a;
+  --primary-text: #ffffff;
+  --accent-color: #f44336;
+  --button-bg: #3a4035;
+  --title-color: #e8f5e3;
+  --subtitle-color: #a0b090;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #faf8f3;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 #root {
