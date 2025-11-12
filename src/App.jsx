@@ -9,11 +9,12 @@ import Dashboard from './pages/Dashboard';
 import './App.css';
 
 function App() {
+  // провайдеры для темы и корзины
   return (
     <ThemeProvider>
       <CartProvider>
         <Router>
-          <div className="app-wrapper">
+          <div className="obolochka_app">
             <Navigation />
             <Routes>
               <Route path="/" element={<Catalog />} />

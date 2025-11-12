@@ -1,9 +1,9 @@
-.navigation {
+.menu_navigacii {
   background: var(--nav-bg);
   border-bottom: 1px solid var(--border-color);
 }
 
-.nav-container {
+.konteyner_menu {
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px 20px;
@@ -12,18 +12,18 @@
   align-items: center;
 }
 
-.nav-link {
+.ssilka_menu {
   padding: 8px 16px;
   text-decoration: none;
   color: var(--text-color);
   border-radius: 4px;
 }
 
-.nav-link.active {
+.ssilka_menu.active {
   font-weight: bold;
 }
 
-.cart-badge {
+.badge_korzina {
   background: var(--accent-color);
   color: white;
   border-radius: 50%;
@@ -37,7 +37,7 @@
   margin-left: 5px;
 }
 
-.theme-select {
+.vybor_temi {
   margin-left: auto;
   padding: 8px 12px;
   background: var(--button-bg);
@@ -48,7 +48,7 @@
   font-size: 1rem;
 }
 
-.theme-select:focus {
+.vybor_temi:focus {
   outline: none;
   border-color: var(--primary-color);
 }

@@ -1,34 +1,34 @@
-.app-wrapper {
+.obolochka_app {
   min-height: 100vh;
   background: var(--bg-color);
 }
 
-.app {
+.glavnaya_stranica {
   min-height: calc(100vh - 60px);
   background: var(--bg-color);
   padding: 40px 20px;
 }
 
-.app-header {
+.zagolovok_stranicy {
   text-align: center;
   margin-bottom: 40px;
   padding: 30px 0;
 }
 
-.shop-title {
+.nazvanie_magazina {
   font-size: 2.5rem;
   margin: 0 0 10px 0;
   color: var(--title-color);
   font-weight: bold;
 }
 
-.shop-subtitle {
+.podzagolovok {
   font-size: 1rem;
   color: var(--subtitle-color);
   margin: 0;
 }
 
-.products-container {
+.konteyner_tovarov {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -37,16 +37,16 @@
 }
 
 /* стили корзины */
-.cart-container {
+.konteyner_korzini {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.cart-items {
+.spisok_tovarov {
   margin-bottom: 30px;
 }
 
-.cart-item {
+.element_korzini {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -57,23 +57,23 @@
   align-items: center;
 }
 
-.cart-item-info {
+.info_elementa {
   flex: 1;
 }
 
-.cart-item-name {
+.nazvanie_elementa {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--title-color);
   margin-bottom: 5px;
 }
 
-.cart-item-price {
+.cena_elementa {
   font-size: 1rem;
   color: var(--text-color);
 }
 
-.remove-btn {
+.knopka_udalit {
   padding: 8px 16px;
   background: var(--accent-color);
   color: white;
@@ -82,7 +82,7 @@
   cursor: pointer;
 }
 
-.cart-total {
+.blok_itogo {
   background: var(--card-bg);
   border: 2px solid var(--primary-color);
   border-radius: 8px;
@@ -92,43 +92,43 @@
   align-items: center;
 }
 
-.total-label {
+.nadpis_itogo {
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--text-color);
 }
 
-.total-price {
+.cena_itogo {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary-color);
 }
 
 /* стили формы входа */
-.login-container {
+.konteyner_vhoda {
   max-width: 400px;
   margin: 0 auto;
 }
 
-.login-form {
+.forma_vhoda {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 30px;
 }
 
-.form-group {
+.gruppa_polya {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.gruppa_polya label {
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
   color: var(--text-color);
 }
 
-.form-group input {
+.gruppa_polya input {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--border-color);
@@ -138,12 +138,12 @@
   color: var(--text-color);
 }
 
-.form-group input:focus {
+.gruppa_polya input:focus {
   outline: none;
   border-color: var(--primary-color);
 }
 
-.login-btn {
+.knopka_vhod {
   width: 100%;
   padding: 12px;
   background: var(--primary-color);
@@ -156,12 +156,12 @@
 }
 
 /* стили главной страницы */
-.dashboard-container {
+.konteyner_dashborda {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.dashboard-content {
+.soderzhimoe_dashborda {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -169,7 +169,7 @@
   text-align: center;
 }
 
-.dashboard-text {
+.tekst_dashborda {
   font-size: 1.1rem;
   color: var(--text-color);
   margin: 0;

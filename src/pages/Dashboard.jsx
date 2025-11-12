@@ -2,14 +2,14 @@ import '../App.css';
 
 function Dashboard() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1 className="shop-title">Golden Flower</h1>
-        <p className="shop-subtitle">Цветочный магазин</p>
+    <div className="glavnaya_stranica">
+      <header className="zagolovok_stranicy">
+        <h1 className="nazvanie_magazina">Golden Flower</h1>
+        <p className="podzagolovok">Цветочный магазин</p>
       </header>
-      <main className="dashboard-container">
-        <div className="dashboard-content">
-          <p className="dashboard-text">
+      <main className="konteyner_dashborda">
+        <div className="soderzhimoe_dashborda">
+          <p className="tekst_dashborda">
             Выберите раздел в панели
           </p>
         </div>

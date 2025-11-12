@@ -1,54 +1,53 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
 
-const cartReducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_TO_CART':
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState({ items: [] });
+
+
+  const poluchitObshuyuCenu = () => {
+    // считаю общую сумму
+    let total = 0;
+    cart.items.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    return total;
+  };
+
+  const udalitIzKorzini = (productId) => {
+    // удаляю товар из корзины
+    setCart(prevCart => ({
+      ...prevCart,
+      items: prevCart.items.filter(item => item.id !== productId)
+    }));
+  };
+
+  const dobavitVKorzinu = (product) => {
+    setCart(prevCart => {
+      // проверяю есть ли уже такой товар
+      const existingItem = prevCart.items.find(item => item.id === product.id);
       if (existingItem) {
+        // если есть увеличиваю количество
         return {
-          ...state,
-          items: state.items.map(item =>
-            item.id === action.payload.id
+          ...prevCart,
+          items: prevCart.items.map(item =>
+            item.id === product.id
               ? { ...item, quantity: item.quantity + 1 }
               : item
           )
         };
       }
+      // если нет добавляю новый
       return {
-        ...state,
-        items: [...state.items, { ...action.payload, quantity: 1 }]
+        ...prevCart,
+        items: [...prevCart.items, { ...product, quantity: 1 }]
       };
-    
-    case 'REMOVE_FROM_CART':
-      return {
-        ...state,
-        items: state.items.filter(item => item.id !== action.payload)
-      };
-    
-    default:
-      return state;
-  }
-};
-
-export const CartProvider = ({ children }) => {
-  const [cart, dispatch] = useReducer(cartReducer, { items: [] });
-
-  const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
-  };
-
-  const removeFromCart = (productId) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: productId });
-  };
-
-  const getTotalPrice = () => {
-    return cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    });
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, getTotalPrice }}>
+    <CartContext.Provider value={{ cart, dobavitVKorzinu, udalitIzKorzini, poluchitObshuyuCenu }}>
       {children}
     </CartContext.Provider>
   );

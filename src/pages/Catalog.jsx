@@ -8,6 +8,7 @@ import bouquet5 from '../assets/images/bouquet5.jpg';
 import bouquet6 from '../assets/images/bouquet6.jpg';
 
 function Catalog() {
+  // список товаров
   const products = [
     {
       id: 1,
@@ -48,12 +49,12 @@ function Catalog() {
   ];
 
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1 className="shop-title">Golden Flower</h1>
-        <p className="shop-subtitle">Цветочный магазин</p>
+    <div className="glavnaya_stranica">
+      <header className="zagolovok_stranicy">
+        <h1 className="nazvanie_magazina">Golden Flower</h1>
+        <p className="podzagolovok">Цветочный магазин</p>
       </header>
-      <main className="products-container">
+      <main className="konteyner_tovarov">
         {products.map(product => (
           <ProductCard
             key={product.id}
