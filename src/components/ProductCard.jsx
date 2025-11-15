@@ -1,33 +1,52 @@
 import { useCart } from '../contexts/CartContext';
+import { useUser } from '../contexts/UserContext';
 import './ProductCard.css';
 
-function ProductCard({ id, name, price, image }) {
-  const { dobavitVKorzinu, cart } = useCart();
+function ProductCard({ id, nazvanie, cena, izobrazhenie, opisanie, dlitelnost, skidka = 0 }) {
+  const { dobavitVKorzinu, korzina } = useCart();
+  const { polzovatel } = useUser();
   
-  // ищу товар в корзине чтобы показать количество
-  const quantity = cart.items.find(item => item.id === id)?.quantity || 0;
-  // если quantity 0 то не показываю бейдж
+  // проверяю есть ли этот товар в корзине, чтобы показать количество
+  const kolichestvo = korzina.tovary.find(tovar => tovar.id === id)?.kolichestvo || 0;
+  
+  // считаю цену со скидкой если она есть
+  const pervobytnayaCena = parseFloat(cena);
+  const summaSkidki = (pervobytnayaCena * skidka) / 100;
+  const finalnayaCena = pervobytnayaCena - summaSkidki;
 
-  const handleClick = () => {
-    dobavitVKorzinu({ id, name, price, image });
-    
+  const obrabotatNazhatie = () => {
+    dobavitVKorzinu({ id, nazvanie, cena: pervobytnayaCena, izobrazhenie }, polzovatel?.id || null);
   };
 
   return (
     <div className="kartochka_tovara">
+      {skidka > 0 && (
+        <div className="badge_skidka">-{skidka}%</div>
+      )}
       <div className="foto_tovara">
-        <img src={image} alt={name} />
+        <img src={izobrazhenie} alt={nazvanie} />
       </div>
       <div className="info_tovara">
-        <h3 className="nazvanie_tovara">{name}</h3>
-        <p className="cena_tovara">{price} ₽</p>
+        <h3 className="nazvanie_tovara">{nazvanie}</h3>
+        {opisanie && <p className="opisanie_tovara">{opisanie}</p>}
+        {dlitelnost && <p className="dlitelnost_tovara">Длительность: {dlitelnost} мин</p>}
+        <div className="cena_blok">
+          {skidka > 0 ? (
+            <>
+              <span className="cena_staraya">{pervobytnayaCena.toFixed(2)} ₽</span>
+              <span className="cena_tovara">{finalnayaCena.toFixed(2)} ₽</span>
+            </>
+          ) : (
+            <span className="cena_tovara">{pervobytnayaCena.toFixed(2)} ₽</span>
+          )}
+        </div>
         <div className="knopki_tovara">
-          <button className="knopka_dobavit" onClick={handleClick}>
+          <button className="knopka_dobavit" onClick={obrabotatNazhatie}>
             Добавить в корзину
           </button>
-          {quantity > 0 && (
+          {kolichestvo > 0 && (
             <div className="badge_kolichestvo">
-              {quantity}
+              {kolichestvo}
             </div>
           )}
         </div>

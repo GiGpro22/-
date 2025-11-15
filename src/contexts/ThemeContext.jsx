@@ -2,41 +2,41 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-// получаю тему из localStorage
-const getInitialTheme = () => {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    return savedTheme;
+// достаю сохраненную тему из localStorage
+const poluchitNachalnuyuTemu = () => {
+  const sohranennayaTema = localStorage.getItem('theme');
+  if (sohranennayaTema) {
+    return sohranennayaTema;
   }
   return 'light';
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    const initial = getInitialTheme();
-    // сразу ставим на документ чтобы не мигало
-    document.documentElement.setAttribute('data-theme', initial);
-    return initial;
+  const [tema, setTema] = useState(() => {
+    const nachalnaya = poluchitNachalnuyuTemu();
+    // сразу применяю тему к документу, чтобы не было мигания
+    document.documentElement.setAttribute('data-theme', nachalnaya);
+    return nachalnaya;
   });
 
   useEffect(() => {
-    // сохраняю тему при изменении
-    localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+    // когда тема меняется, сохраняю её в localStorage
+    localStorage.setItem('theme', tema);
+    document.documentElement.setAttribute('data-theme', tema);
+  }, [tema]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ tema, setTema }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
+  const kontekst = useContext(ThemeContext);
+  if (!kontekst) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
-  return context;
+  return kontekst;
 };
 

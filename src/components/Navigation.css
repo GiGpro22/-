@@ -53,3 +53,18 @@
   border-color: var(--primary-color);
 }
 
+.knopka_vihod {
+  padding: 8px 16px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.knopka_vihod:hover {
+  opacity: 0.9;
+}
+

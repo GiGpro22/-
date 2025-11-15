@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { CartProvider } from './contexts/CartContext';
+import { UserProvider } from './contexts/UserContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Navigation from './components/Navigation';
 import Catalog from './pages/Catalog';
@@ -9,23 +10,25 @@ import Dashboard from './pages/Dashboard';
 import './App.css';
 
 function App() {
-  // провайдеры для темы и корзины
+  // оборачиваю все в провайдеры для темы, корзины и пользователя
   return (
     <ThemeProvider>
-      <CartProvider>
-        <Router>
-          <div className="obolochka_app">
-            <Navigation />
-            <Routes>
-              <Route path="/" element={<Catalog />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
-        </Router>
-      </CartProvider>
+      <UserProvider>
+        <CartProvider>
+          <Router>
+            <div className="obolochka_app">
+              <Navigation />
+              <Routes>
+                <Route path="/" element={<Catalog />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
+          </Router>
+        </CartProvider>
+      </UserProvider>
     </ThemeProvider>
   );
 }

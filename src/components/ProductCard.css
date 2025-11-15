@@ -5,6 +5,20 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.badge_skidka {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4444;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  z-index: 10;
 }
 
 .foto_tovara {
@@ -31,6 +45,31 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--title-color);
+}
+
+.opisanie_tovara {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--subtitle-color);
+  line-height: 1.4;
+}
+
+.dlitelnost_tovara {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--subtitle-color);
+}
+
+.cena_blok {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cena_staraya {
+  font-size: 1rem;
+  color: var(--subtitle-color);
+  text-decoration: line-through;
 }
 
 .cena_tovara {
